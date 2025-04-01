@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:DigitalWellBeingApp.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#1E1E2E">
+    <Grid>
         <TextBlock Text="Dashboard" Foreground="White" FontSize="24"
                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
