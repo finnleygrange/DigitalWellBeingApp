@@ -8,39 +8,23 @@
         mc:Ignorable="d"
         Height="450" Width="800" 
         WindowStartupLocation="CenterScreen" 
-        WindowStyle="None"
+        WindowStyle="SingleBorderWindow"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Background="Transparent"
-        AllowsTransparency="True"
         >
-    <Border Background="#1E1E2E" CornerRadius="10">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="35" />
-                <RowDefinition />
-                <RowDefinition Height="20" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="0" Grid.RowSpan="3">
-                <controls:Sidebar ViewDashboard="Sidebar_ViewDashboard" ViewPomodoro="Sidebar_ViewPomodoro" ViewReports="Sidebar_ViewReports" ViewSettings="Sidebar_ViewSettings"></controls:Sidebar>
-            </Grid>
-            
-            <Grid Grid.Column="2">
-                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="btnMinimize" Content="−" Width="40" Click="btnMinimize_Click"
-                        Style="{StaticResource WindowControlButton}" />
-                    <Button x:Name="btnMaximize" Content="🗖" Width="40" Click="btnMaximize_Click" 
-                        Style="{StaticResource WindowControlButton}" />
-                    <Button x:Name="btnClose" Content="X" Width="40" Click="btnClose_Click"
-                        Style="{StaticResource WindowControlButton}" />
-                </StackPanel>
-            </Grid>
-
-            <ContentControl x:Name="MainContent" Grid.Column="1" Grid.Row="1" />
+    <Grid Background="#1E1E2E">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Grid.RowSpan="3">
+            <controls:Sidebar ViewDashboard="Sidebar_ViewDashboard" ViewPomodoro="Sidebar_ViewPomodoro" ViewReports="Sidebar_ViewReports" ViewSettings="Sidebar_ViewSettings"></controls:Sidebar>
         </Grid>
-    </Border>
+        <ContentControl x:Name="MainContent" Grid.Column="1" Grid.Row="1" />
+    </Grid>
 </Window>
