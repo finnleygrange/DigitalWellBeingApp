@@ -9,13 +9,33 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <None Remove="Resources\Fonts\Quicksand-Bold.ttf" />
+    <None Remove="Resources\Fonts\Quicksand-Light.ttf" />
+    <None Remove="Resources\Fonts\Quicksand-Medium.ttf" />
+    <None Remove="Resources\Fonts\Quicksand-Regular.ttf" />
+    <None Remove="Resources\Fonts\Quicksand-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Resources\" />
+    <Folder Include="Models\" />
+    <Folder Include="Resources\Images\" />
     <Folder Include="Services\" />
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Fonts\Quicksand-Bold.ttf" />
+    <Resource Include="Resources\Fonts\Quicksand-Light.ttf" />
+    <Resource Include="Resources\Fonts\Quicksand-Medium.ttf" />
+    <Resource Include="Resources\Fonts\Quicksand-Regular.ttf" />
+    <Resource Include="Resources\Fonts\Quicksand-SemiBold.ttf" />
   </ItemGroup>
 
 </Project>

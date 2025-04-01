@@ -4,9 +4,64 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DigitalWellBeingApp"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Height="450" Width="800" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="None"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Background="Transparent"
+        AllowsTransparency="True"
+        >
+    <Border Background="#1E1E2E" CornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition />
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="btnMinimize" Content="−" Width="40" Click="btnMinimize_Click"
+                        Style="{StaticResource WindowControlButton}" />
+                <Button x:Name="btnMaximize" Content="🗖" Width="40" Click="btnMaximize_Click" 
+                        Style="{StaticResource WindowControlButton}" />
+                <Button x:Name="btnClose" Content="X" Width="40" Click="btnClose_Click"
+                        Style="{StaticResource WindowControlButton}" />
+            </StackPanel>
+            <Border CornerRadius="10, 0, 0, 10" Grid.RowSpan="3" Background="#2A2A40">
+                <Grid>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="150">
+                        <TextBlock Text="MyApp"
+                           FontSize="20"
+                           Margin="20"
+                           FontWeight="Bold"
+                           FontFamily="Quicksand" 
+                           HorizontalAlignment="Center" 
+                           Foreground="#F8FAFC" />
+                        <Button Content="Dashboard" Style="{StaticResource NavButton}" />
+                        <Button Content="Pomodoro" Style="{StaticResource NavButton}" />
+                        <Button Content="Reports" Style="{StaticResource NavButton}" />
+                        <Button Content="Settings" Style="{StaticResource NavButton}" />
+                    </StackPanel>
+                </Grid>
+            </Border>
 
-    </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
 </Window>
