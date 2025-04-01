@@ -15,18 +15,12 @@
         Title="Digital Well Being Tool"
         >
     <Grid Background="#1E1E2E">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="35" />
-            <RowDefinition />
-            <RowDefinition Height="20" />
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="0" Grid.RowSpan="3">
-            <controls:Sidebar ViewDashboard="Sidebar_ViewDashboard" ViewPomodoro="Sidebar_ViewPomodoro" ViewReports="Sidebar_ViewReports" ViewSettings="Sidebar_ViewSettings"></controls:Sidebar>
-        </Grid>
-        <ContentControl x:Name="MainContent" Grid.Column="1" Grid.Row="1" />
+        
+        <controls:Sidebar ViewDashboard="Sidebar_ViewDashboard" ViewPomodoro="Sidebar_ViewPomodoro" ViewReports="Sidebar_ViewReports" ViewSettings="Sidebar_ViewSettings"></controls:Sidebar>
+        <ContentControl Grid.Column="1"  x:Name="MainContent"/>
     </Grid>
 </Window>
