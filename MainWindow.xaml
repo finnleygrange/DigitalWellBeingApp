@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DigitalWellBeingApp"
-        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:controls="clr-namespace:DigitalWellBeingApp.Controls"
         mc:Ignorable="d"
         Height="450" Width="800" 
         WindowStartupLocation="CenterScreen" 
@@ -24,44 +24,23 @@
                 <ColumnDefinition Width="150" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="btnMinimize" Content="−" Width="40" Click="btnMinimize_Click"
-                        Style="{StaticResource WindowControlButton}" />
-                <Button x:Name="btnMaximize" Content="🗖" Width="40" Click="btnMaximize_Click" 
-                        Style="{StaticResource WindowControlButton}" />
-                <Button x:Name="btnClose" Content="X" Width="40" Click="btnClose_Click"
-                        Style="{StaticResource WindowControlButton}" />
-            </StackPanel>
-            <Border CornerRadius="10, 0, 0, 10" Grid.RowSpan="3" Background="#2A2A40">
-                <Grid>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="150">
-                        <TextBlock Text="MyApp"
-                           FontSize="20"
-                           Margin="20"
-                           FontWeight="Bold"
-                           FontFamily="Quicksand" 
-                           HorizontalAlignment="Center" 
-                           Foreground="#F8FAFC" />
-                        <Button Content="Dashboard" Style="{StaticResource NavButton}" />
-                        <Button Content="Pomodoro" Style="{StaticResource NavButton}" />
-                        <Button Content="Reports" Style="{StaticResource NavButton}" />
-                        <Button Content="Settings" Style="{StaticResource NavButton}" />
-                    </StackPanel>
-                </Grid>
-            </Border>
 
-            <Grid Grid.Row="1" Grid.Column="1">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                </Grid>
+            <Grid Grid.Column="0" Grid.RowSpan="3">
+                <controls:Sidebar ViewDashboard="Sidebar_ViewDashboard" ViewPomodoro="Sidebar_ViewPomodoro" ViewReports="Sidebar_ViewReports" ViewSettings="Sidebar_ViewSettings"></controls:Sidebar>
             </Grid>
+            
+            <Grid Grid.Column="2">
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="btnMinimize" Content="−" Width="40" Click="btnMinimize_Click"
+                        Style="{StaticResource WindowControlButton}" />
+                    <Button x:Name="btnMaximize" Content="🗖" Width="40" Click="btnMaximize_Click" 
+                        Style="{StaticResource WindowControlButton}" />
+                    <Button x:Name="btnClose" Content="X" Width="40" Click="btnClose_Click"
+                        Style="{StaticResource WindowControlButton}" />
+                </StackPanel>
+            </Grid>
+
+            <ContentControl x:Name="MainContent" Grid.Column="1" Grid.Row="1" />
         </Grid>
     </Border>
 </Window>

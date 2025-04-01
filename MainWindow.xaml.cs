@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls;
+using DigitalWellBeingApp.Views;
 using LiveCharts;
 using LiveCharts.Wpf;
 
@@ -68,6 +69,26 @@ namespace DigitalWellBeingApp
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
+        }
+
+        private void Sidebar_ViewDashboard(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new Dashboard();
+        }
+
+        private void Sidebar_ViewPomodoro(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new Pomodoro();
+        }
+
+        private void Sidebar_ViewReports(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new Reports();
+        }
+
+        private void Sidebar_ViewSettings(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new Settings();
         }
     }
 }
