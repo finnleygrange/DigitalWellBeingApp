@@ -11,6 +11,8 @@
         WindowStyle="SingleBorderWindow"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Background="Transparent"
+        Icon="C:/Users/Finnl/Desktop/DigitalWellBeingApp/Resources/Images/Icon.png"
+        Title="Digital Well Being Tool"
         >
     <Grid Background="#1E1E2E">
         <Grid.RowDefinitions>
