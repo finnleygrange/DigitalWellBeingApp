@@ -7,31 +7,41 @@
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="pack://application:,,,/Resources/Fonts/#Quicksand" />
             <Setter Property="Foreground" Value="#CBD5E1" />
-
         </Style>
-        <Style x:Key="NavButton" TargetType="Button">
+        <Style x:Key="NavButton" TargetType="RadioButton">
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="BorderBrush" Value="Transparent" />
-            <Setter Property="Padding" Value="10" />
-            <Setter Property="Margin" Value="5 2" />
-            <Setter Property="FontWeight" Value="DemiBold" />
-        </Style>
-        <Style x:Key="WindowControlButton" TargetType="Button">
-            <Setter Property="FontWeight" Value="Medium"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#F8FAFC"/>
             <Setter Property="FontSize" Value="16"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Padding" Value="12"/>
+            <Setter Property="Margin" Value="5 2"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Content" Value=""/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" CornerRadius="0, 10, 0, 0">
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border Background="{TemplateBinding Background}" Padding="10" CornerRadius="5">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#4C51BF"/>
+                                <Setter Property="Foreground" Value="White"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#3B42A3"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Background" Value="#4F46E5"/> 
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="#B0B0B0"/>
+                                <Setter Property="Foreground" Value="#7D7D7D"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

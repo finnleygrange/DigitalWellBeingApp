@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DigitalWellBeingApp"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:controls="clr-namespace:DigitalWellBeingApp.Controls"
         mc:Ignorable="d"
-        Height="450" Width="800" 
+        Height="700" Width="1200" 
         WindowStartupLocation="CenterScreen" 
         WindowStyle="SingleBorderWindow"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
@@ -16,7 +16,7 @@
         >
     <Grid Background="#1E1E2E">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="250" />
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         

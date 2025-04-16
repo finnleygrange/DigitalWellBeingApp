@@ -14,6 +14,7 @@
     <None Remove="Resources\Fonts\Quicksand-Medium.ttf" />
     <None Remove="Resources\Fonts\Quicksand-Regular.ttf" />
     <None Remove="Resources\Fonts\Quicksand-SemiBold.ttf" />
+    <None Remove="Resources\Images\Icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
   </ItemGroup>
 
@@ -33,6 +35,7 @@
     <Resource Include="Resources\Fonts\Quicksand-Medium.ttf" />
     <Resource Include="Resources\Fonts\Quicksand-Regular.ttf" />
     <Resource Include="Resources\Fonts\Quicksand-SemiBold.ttf" />
+    <Resource Include="Resources\Images\Icon.png" />
   </ItemGroup>
 
 </Project>
