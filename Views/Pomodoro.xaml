@@ -14,25 +14,26 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
-            <RadioButton Content="Pomodoro" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" IsChecked="True"/>
-            <RadioButton Content="Short Break" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" Margin="10,0"/>
-            <RadioButton Content="Long Break" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}"/>
+            <RadioButton x:Name="btnPomodoro" Content="Pomodoro" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" IsChecked="True" Checked="btnPomodoro_Checked"/>
+            <RadioButton x:Name="btnShortBreak" Content="Short Break" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" Margin="10,0" Checked="btnShortBreak_Checked"/>
+            <RadioButton x:Name="btnLongBreak" Content="Long Break" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" Checked="btnLongBreak_Checked"/>
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="0,20">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <TextBlock Text="25:00"
+                <TextBlock x:Name="TimerText" Text="25:00"
                    FontSize="96" FontWeight="Bold"
                    Foreground="#F8FAFC"
                    HorizontalAlignment="Center"/>
                 <Button Content="START"
+                Name="btnStart"
                 Width="220" Height="60"
                 FontSize="28" FontWeight="SemiBold"
                 Foreground="White"
                 Background="#4F46E5"
                 BorderBrush="Transparent"
                 HorizontalAlignment="Center"
-                Cursor="Hand"/>
+                Cursor="Hand" Click="btnStart_Click"/>
             </StackPanel>
         </Grid>
 
