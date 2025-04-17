@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:DigitalWellBeingApp"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:controls="clr-namespace:DigitalWellBeingApp.Controls"
         mc:Ignorable="d"
+        MinHeight="600" MinWidth="800"
         Height="700" Width="1200" 
         WindowStartupLocation="CenterScreen" 
         WindowStyle="SingleBorderWindow"
