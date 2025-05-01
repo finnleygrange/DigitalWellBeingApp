@@ -15,6 +15,13 @@
     <None Remove="Resources\Fonts\Quicksand-Regular.ttf" />
     <None Remove="Resources\Fonts\Quicksand-SemiBold.ttf" />
     <None Remove="Resources\Images\Icon.png" />
+    <None Remove="Resources\Sounds\alarm.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Sounds\alarm.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
