@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:DigitalWellBeingApp.Views" xmlns:fa="http://schemas.fontawesome.io/icons/"
+             xmlns:local="clr-namespace:DigitalWellBeingApp.Views" xmlns:fa="http://schemas.fontawesome.io/icons/" xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
              mc:Ignorable="d"
              d:DesignHeight="700" d:DesignWidth="1200">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="4*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
@@ -20,7 +20,17 @@
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="0,20">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <emoji:TextBlock FontSize="18" Text="🔥" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="PomodoroCountText" Text="Pomodoros Completed: 0 "
+                       FontSize="18" FontWeight="DemiBold"
+                       Foreground="#F8FAFC"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       />
+                </StackPanel>
+                
 
                 <TextBlock x:Name="TimerText" Text="25:00"
                    FontSize="72" FontWeight="DemiBold"
@@ -38,17 +48,17 @@
                             BorderBrush="Transparent"
                             HorizontalAlignment="Center"
                             Cursor="Hand" Click="btnStart_Click"/>
-                    <Button Content="Reset"
+
+                    <Button Content="RESET"
                             Name="btnReset"
                             Width="220" Height="60"
                             Margin="5"
                             FontSize="28" FontWeight="SemiBold"
                             Foreground="White"
-                            Background="WhiteSmoke"
+                            Background="DimGray"
                             BorderBrush="Transparent"
                             HorizontalAlignment="Center"
-                            Cursor="Hand" Click="btnReset_Click"/>
-                    
+                            Cursor="Hand" Click="btnStart_Click"/>
                 </StackPanel>
             </StackPanel>
         </Grid>

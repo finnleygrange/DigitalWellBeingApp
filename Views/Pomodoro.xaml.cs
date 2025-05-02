@@ -3,6 +3,7 @@ using System.IO;
 using System.Media;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace DigitalWellBeingApp.Views
@@ -42,12 +43,25 @@ namespace DigitalWellBeingApp.Views
                 if (btnPomodoro.IsChecked == true)
                     _pomodoroCount++;
 
+
+                UpdatePomodoroCountDisplay();
                 PlayCustomAlarm();
             }
         }
 
+        private void UpdatePomodoroCountDisplay()
+        {
+            PomodoroCountText.Text = $"Pomodoros Completed: {_pomodoroCount}";
+        }
+
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
+
+            if (!_isRunning && _timeLeft.TotalSeconds == 0)
+            {
+                return;
+            }
+
             if (_isRunning)
             {
                 _timer.Stop();
@@ -121,12 +135,17 @@ namespace DigitalWellBeingApp.Views
             try
             {
                 SoundPlayer player = new SoundPlayer(soundPath);
-                player.PlayLooping();
+                player.Play();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error playing sound: {ex.Message}");
             }
+        }
+
+        private void btnStart_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            
         }
     }
 }
