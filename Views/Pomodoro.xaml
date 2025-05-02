@@ -8,22 +8,22 @@
              d:DesignHeight="700" d:DesignWidth="1200">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
             <RadioButton x:Name="btnPomodoro" Content="Pomodoro" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" IsChecked="True" Checked="btnPomodoro_Checked"/>
             <RadioButton x:Name="btnShortBreak" Content="Short Break" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" Margin="10,0" Checked="btnShortBreak_Checked"/>
             <RadioButton x:Name="btnLongBreak" Content="Long Break" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" Checked="btnLongBreak_Checked"/>
         </StackPanel>
 
-        <Grid Grid.Row="1" Margin="0,20">
+        <Grid Grid.Row="1" Margin="10">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <emoji:TextBlock FontSize="18" Text="🔥" VerticalAlignment="Center"/>
-                    <TextBlock x:Name="PomodoroCountText" Text="Pomodoros Completed: 0 "
+                    <TextBlock x:Name="PomodoroCountText" Text=" Pomodoros Completed: 0 "
                        FontSize="18" FontWeight="DemiBold"
                        Foreground="#F8FAFC"
                        HorizontalAlignment="Center"

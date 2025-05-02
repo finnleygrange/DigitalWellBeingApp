@@ -7,13 +7,20 @@
         xmlns:controls="clr-namespace:DigitalWellBeingApp.Controls"
         mc:Ignorable="d"
         MinHeight="600" MinWidth="800"
-        Height="700" Width="1200" 
+        Height="900" Width="1440" 
         WindowStartupLocation="CenterScreen" 
         WindowStyle="SingleBorderWindow"
         Background="Transparent"
         Icon="C:/Users/Finnl/Desktop/DigitalWellBeingApp/Resources/Images/Icon.png"
         Title="Digital Well Being Tool"
         >
+
+    <Window.Resources>
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="Black" />
+        </Style>
+    </Window.Resources>
+    
     <Grid Background="#1E1E2E">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250" />

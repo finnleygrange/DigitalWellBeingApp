@@ -24,5 +24,25 @@ namespace DigitalWellBeingApp.Views
         {
             InitializeComponent();
         }
+
+        private void btnDay_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnWeek_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnMonth_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSixMonths_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
