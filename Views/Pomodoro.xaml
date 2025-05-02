@@ -10,7 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
@@ -30,7 +30,7 @@
                        VerticalAlignment="Center"
                        />
                 </StackPanel>
-                
+
 
                 <TextBlock x:Name="TimerText" Text="25:00"
                    FontSize="72" FontWeight="DemiBold"
@@ -62,35 +62,5 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
-
-
-        <!--<Grid Grid.Row="3" Margin="20">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-
-            <StackPanel Grid.Column="0" Margin="0,0,20,0">
-                <TextBlock Text="Pomodoro 1 of 4"
-                           FontSize="20" FontWeight="Bold"
-                           Foreground="#A5B4FC"
-                           HorizontalAlignment="Center"/>
-                <TextBlock Text="Focus time remaining before your next break."
-                           FontSize="14" Foreground="#CBD5E1"/>
-            </StackPanel>
-
-            <StackPanel Grid.Column="1">
-                <TextBlock Text="Today's Tasks"
-                           FontSize="20" FontWeight="Bold"
-                           Foreground="#A5B4FC"
-                           HorizontalAlignment="Center"/>
-                <StackPanel>
-                    <CheckBox Content="Finish UI for Pomodoro" Foreground="#F8FAFC" Margin="0,2"/>
-                    <CheckBox Content="Write daily journal" Foreground="#F8FAFC" Margin="0,2"/>
-                    <CheckBox Content="Take 5 min walk" Foreground="#F8FAFC" Margin="0,2"/>
-                </StackPanel>
-            </StackPanel>
-        </Grid>-->
-
     </Grid>
 </UserControl>

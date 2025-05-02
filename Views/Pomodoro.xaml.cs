@@ -56,6 +56,8 @@ namespace DigitalWellBeingApp.Views
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
+            string soundPath = Path.Combine(Directory.GetCurrentDirectory(), "Resources", "Sounds", "click.wav");
+
 
             if (!_isRunning && _timeLeft.TotalSeconds == 0)
             {
@@ -74,6 +76,9 @@ namespace DigitalWellBeingApp.Views
             }
 
             _isRunning = !_isRunning;
+
+            SoundPlayer player = new SoundPlayer(soundPath);
+            player.Play();
         }
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
