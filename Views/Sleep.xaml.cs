@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DigitalWellBeingApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace DigitalWellBeingApp.Views
         public Sleep()
         {
             InitializeComponent();
+            this.DataContext = new SleepViewModel();
         }
 
         private void btnDay_Checked(object sender, RoutedEventArgs e)

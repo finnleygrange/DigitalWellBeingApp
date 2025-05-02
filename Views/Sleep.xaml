@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:DigitalWellBeingApp.Views" xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
+             xmlns:local="clr-namespace:DigitalWellBeingApp.Views" xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf" xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
              mc:Ignorable="d"
              d:DesignHeight="900" d:DesignWidth="1440">
 
@@ -14,7 +14,6 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <!-- Top Menu -->
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20" Grid.Row="0">
             <RadioButton x:Name="btnDay" Content="Day" Width="100" Style="{StaticResource NavButton}" IsChecked="True" Checked="btnDay_Checked"/>
             <RadioButton x:Name="btnWeek" Content="Week" Width="100" Style="{StaticResource NavButton}" Margin="10,0" Checked="btnWeek_Checked"/>
@@ -22,9 +21,8 @@
             <RadioButton x:Name="btnSixMonths" Content="6 Months" Width="100" Style="{StaticResource NavButton}" Checked="btnSixMonths_Checked"/>
         </StackPanel>
 
-        <!-- Chart Placeholder -->
         <Grid Grid.Row="1" Margin="10">
-            <StackPanel Orientation="Horizontal"
+            <!--<StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Top">
                 <emoji:TextBlock FontSize="18" Text="💤" VerticalAlignment="Center"/>
@@ -34,7 +32,12 @@
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                />
-            </StackPanel>
+            </StackPanel>-->
+            <lvc:CartesianChart
+                Series="{Binding Series}"
+                XAxes="{Binding XAxes}"
+                YAxes="{Binding YAxes}">
+            </lvc:CartesianChart>
         </Grid>
 
         <Grid Grid.Row="2" Margin="20">
@@ -44,12 +47,10 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <!-- Add Sleep Entry - Left Column -->
             <StackPanel Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left">
                 <TextBlock Text="Add Sleep Entry" FontSize="22" FontWeight="SemiBold" Foreground="White" Margin="10"/>
 
                 <StackPanel Orientation="Horizontal" Margin="5">
-                    <!-- Start Time -->
                     <StackPanel Margin="10">
                         <TextBlock Text="Start" Foreground="White" FontWeight="Bold" Margin="0,0,0,5"/>
                         <DatePicker x:Name="StartDatePicker" Width="160" Background="#2D2D40" Foreground="White"/>
@@ -89,7 +90,6 @@
                         </StackPanel>
                     </StackPanel>
 
-                    <!-- End Time -->
                     <StackPanel Margin="10">
                         <TextBlock Text="End" Foreground="White" FontWeight="Bold" Margin="0,0,0,5"/>
                         <DatePicker x:Name="EndDatePicker" Width="160" Background="#2D2D40" Foreground="White"/>
@@ -142,7 +142,6 @@
                 HorizontalAlignment="Left"/>
             </StackPanel>
 
-            <!-- Sleep Logs - Right Column -->
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -150,8 +149,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Sleep Logs" FontSize="22" FontWeight="SemiBold" Foreground="White" Margin="10" Grid.Row="0"/>
-
-                <!-- ListBox will now stretch and fill the space -->
+                
                 <ListBox Grid.Row="1"
                          Background="#2D2D40"
                          Foreground="White"
