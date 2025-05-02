@@ -25,6 +25,7 @@ namespace DigitalWellBeingApp.Controls
         public static readonly RoutedEvent ViewPomodoroEvent = EventManager.RegisterRoutedEvent(nameof(ViewPomodoro), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Sidebar));
         public static readonly RoutedEvent ViewReportsEvent = EventManager.RegisterRoutedEvent(nameof(ViewReports), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Sidebar));
         public static readonly RoutedEvent ViewSettingsEvent = EventManager.RegisterRoutedEvent(nameof(ViewSettings), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Sidebar));
+        public static readonly RoutedEvent ViewSleepEvent = EventManager.RegisterRoutedEvent(nameof(ViewSleep), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Sidebar));
 
         public Sidebar()
         {
@@ -55,6 +56,12 @@ namespace DigitalWellBeingApp.Controls
             remove { RemoveHandler(ViewSettingsEvent, value); }
         }
 
+        public event RoutedEventHandler ViewSleep
+        {
+            add { AddHandler(ViewSleepEvent, value); }
+            remove { RemoveHandler(ViewSleepEvent, value); }
+        }
+
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
             RaiseEvent(new RoutedEventArgs(ViewDashboardEvent));
@@ -73,6 +80,11 @@ namespace DigitalWellBeingApp.Controls
         private void btnSettings_Click(object sender, RoutedEventArgs e)
         {
             RaiseEvent(new RoutedEventArgs(ViewSettingsEvent));
+        }
+
+        private void btnSleep_Click(object sender, RoutedEventArgs e)
+        {
+            RaiseEvent(new RoutedEventArgs(ViewSleepEvent));
         }
     }
 }

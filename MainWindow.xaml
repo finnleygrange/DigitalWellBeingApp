@@ -20,7 +20,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-        <controls:Sidebar ViewDashboard="Sidebar_ViewDashboard" ViewPomodoro="Sidebar_ViewPomodoro" ViewReports="Sidebar_ViewReports" ViewSettings="Sidebar_ViewSettings"></controls:Sidebar>
+        <controls:Sidebar ViewDashboard="Sidebar_ViewDashboard" ViewPomodoro="Sidebar_ViewPomodoro" ViewReports="Sidebar_ViewReports" ViewSettings="Sidebar_ViewSettings" ViewSleep="Sidebar_ViewSleep"></controls:Sidebar>
         <ContentControl Grid.Column="1"  x:Name="MainContent"/>
     </Grid>
 </Window>

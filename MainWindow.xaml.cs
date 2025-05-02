@@ -144,5 +144,10 @@ namespace DigitalWellBeingApp
         {
             MainContent.Content = new Settings();
         }
+
+        private void Sidebar_ViewSleep(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new Sleep();
+        }
     }
 }
