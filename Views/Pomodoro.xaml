@@ -58,7 +58,7 @@
                             Background="DimGray"
                             BorderBrush="Transparent"
                             HorizontalAlignment="Center"
-                            Cursor="Hand" Click="btnStart_Click"/>
+                            Cursor="Hand" Click="btnReset_Click"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
