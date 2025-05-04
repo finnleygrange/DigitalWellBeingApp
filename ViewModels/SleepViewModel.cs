@@ -23,6 +23,8 @@ public class SleepViewModel : INotifyPropertyChanged
     public event PropertyChangedEventHandler? PropertyChanged;
 
     private ObservableCollection<double> _sleepValues = new();
+    public ObservableCollection<string> SleepLogs { get; set; } = new ObservableCollection<string>();
+
     private string[] _xLabels = Array.Empty<string>();
 
     public ISeries[] Series { get; set; }
@@ -172,6 +174,12 @@ public class SleepViewModel : INotifyPropertyChanged
         double averageSleep = numberOfEntries > 0 ? totalSleep / numberOfEntries : 0;
 
         AverageSleep = averageSleep;
+
+        SleepLogs.Clear();
+        foreach (var entry in entries.OrderByDescending(e => e.Date))
+        {
+            SleepLogs.Add($"{entry.HoursSlept} hrs on {entry.Date:dd/MM/yyyy}");
+        }
 
         OnPropertyChanged(nameof(Series));
         OnPropertyChanged(nameof(XAxes));

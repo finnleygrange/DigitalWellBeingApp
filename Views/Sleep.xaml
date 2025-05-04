@@ -153,15 +153,12 @@
 
                 <TextBlock Text="Sleep Logs" FontSize="22" FontWeight="SemiBold" Foreground="White" Margin="10" Grid.Row="0"/>
 
-                <ListBox x:Name="SleepLogsList"
+                <ListBox ItemsSource="{Binding SleepLogs}"
                          Grid.Row="1"
                          Background="#2D2D40"
                          Foreground="White"
                          Margin="10"
-                         VerticalAlignment="Stretch">
-                    <ListBoxItem Content="8 hrs on 01/05/2025"/>
-                    <ListBoxItem Content="6.5 hrs on 30/04/2025"/>
-                </ListBox>
+                         VerticalAlignment="Stretch"/>
             </Grid>
         </Grid>
     </Grid>
