@@ -88,5 +88,19 @@ namespace DigitalWellBeingApp.Views
             }
         }
 
+        private void RemoveSleepLog_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.DataContext is string logText)
+            {
+                if (DataContext is SleepViewModel vm)
+                {
+                    var result = MessageBox.Show("Are you sure you want to delete this sleep log?", "Confirm Delete", MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        vm.RemoveSleepEntry(logText);
+                    }
+                }
+            }
+        }
     }
 }

@@ -152,13 +152,80 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Sleep Logs" FontSize="22" FontWeight="SemiBold" Foreground="White" Margin="10" Grid.Row="0"/>
-
                 <ListBox ItemsSource="{Binding SleepLogs}"
-                         Grid.Row="1"
-                         Background="#2D2D40"
-                         Foreground="White"
-                         Margin="10"
-                         VerticalAlignment="Stretch"/>
+         x:Name="SleepLogsList"
+         Grid.Row="1"
+         Background="#2D2D40"
+         Foreground="White"
+         Margin="10"
+         VerticalAlignment="Stretch"
+         HorizontalContentAlignment="Stretch">
+                    <!-- Makes each item fill width -->
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="5" VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="{Binding}"
+                           VerticalAlignment="Center"
+                           Grid.Column="0"
+                           Padding="5,0"/>
+
+                                <Button Content="×"
+        Width="24"
+        Height="24"
+        FontWeight="Bold"
+        FontSize="14"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+        Background="Transparent"
+        Foreground="White"
+        BorderBrush="Transparent"
+        Cursor="Hand"
+        Grid.Column="1"
+        Click="RemoveSleepLog_Click">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Background" Value="Transparent"/>
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="BorderBrush" Value="Transparent"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="3"
+                                Padding="0"
+                                Width="24"
+                                Height="24"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center">
+                                                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="True">
+                                                                <Setter TargetName="border" Property="Background" Value="#33FFFFFF"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsPressed" Value="True">
+                                                                <Setter TargetName="border" Property="Background" Value="#66FFFFFF"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
             </Grid>
         </Grid>
     </Grid>

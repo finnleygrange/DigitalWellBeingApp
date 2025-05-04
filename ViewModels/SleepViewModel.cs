@@ -213,6 +213,21 @@ public class SleepViewModel : INotifyPropertyChanged
         LoadData();
     }
 
+    public void RemoveSleepEntry(string logText)
+    {
+        using var db = new AppDbContext();
+        var entry = db.SleepEntries
+            .ToList()
+            .FirstOrDefault(e => $"{e.HoursSlept} hrs on {e.Date:dd/MM/yyyy}" == logText);
+
+        if (entry != null)
+        {
+            db.SleepEntries.Remove(entry);
+            db.SaveChanges();
+            LoadData();
+        }
+    }
+
 
     private void OnPropertyChanged([CallerMemberName] string? name = null)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
