@@ -160,6 +160,9 @@ public class SleepViewModel : INotifyPropertyChanged
         }
         };
 
+        double maxValue = _sleepValues.Any() ? _sleepValues.Max() : 0;
+        double yAxisMax = maxValue > 0 ? Math.Ceiling(maxValue + 1) : 10;
+
         YAxes = new Axis[]
         {
         new Axis
@@ -167,9 +170,12 @@ public class SleepViewModel : INotifyPropertyChanged
             Name = "Hours",
             Labeler = value => $"{value} hrs",
             NamePaint = new SolidColorPaint(SKColors.White),
-            MinLimit = 0
+            MinLimit = 0,
+            MaxLimit = yAxisMax,
+            MinStep = 1
         }
         };
+
 
         double averageSleep = numberOfEntries > 0 ? totalSleep / numberOfEntries : 0;
 
