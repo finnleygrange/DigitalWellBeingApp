@@ -22,17 +22,6 @@
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="10">
-            <!--<StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Top">
-                <emoji:TextBlock FontSize="18" Text="💤" VerticalAlignment="Center"/>
-                <TextBlock x:Name="PomodoroCountText" Text=" Sleep Goal: 8"
-               FontSize="18" FontWeight="DemiBold"
-               Foreground="#F8FAFC"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-               />
-            </StackPanel>-->
             <lvc:CartesianChart
                 Series="{Binding Series}"
                 XAxes="{Binding XAxes}"
@@ -42,8 +31,7 @@
 
         <Grid Grid.Row="2" Margin="20">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
@@ -55,7 +43,7 @@
                         <TextBlock Text="Start" Foreground="White" FontWeight="Bold" Margin="0,0,0,5"/>
                         <DatePicker x:Name="StartDatePicker" Width="160" Background="#2D2D40" Foreground="White"/>
                         <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                            <ComboBox Width="60" Height="25" Margin="5" VerticalContentAlignment="Center">
+                            <ComboBox x:Name="StartHourBox" Width="60" Height="25" Margin="5" VerticalContentAlignment="Center">
                                 <ComboBoxItem Content="00"/>
                                 <ComboBoxItem Content="01"/>
                                 <ComboBoxItem Content="02"/>
@@ -81,7 +69,7 @@
                                 <ComboBoxItem Content="22"/>
                                 <ComboBoxItem Content="23"/>
                             </ComboBox>
-                            <ComboBox Width="60" Height="25" Margin="5" VerticalContentAlignment="Center">
+                            <ComboBox x:Name="StartMinuteBox" Width="60" Height="25" Margin="5" VerticalContentAlignment="Center">
                                 <ComboBoxItem Content="00"/>
                                 <ComboBoxItem Content="15"/>
                                 <ComboBoxItem Content="30"/>
@@ -94,7 +82,7 @@
                         <TextBlock Text="End" Foreground="White" FontWeight="Bold" Margin="0,0,0,5"/>
                         <DatePicker x:Name="EndDatePicker" Width="160" Background="#2D2D40" Foreground="White"/>
                         <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                            <ComboBox Width="60" Height="25" Margin="5" VerticalContentAlignment="Center">
+                            <ComboBox x:Name="EndHourBox" Width="60" Height="25" Margin="5" VerticalContentAlignment="Center">
                                 <ComboBoxItem Content="00"/>
                                 <ComboBoxItem Content="01"/>
                                 <ComboBoxItem Content="02"/>
@@ -120,7 +108,7 @@
                                 <ComboBoxItem Content="22"/>
                                 <ComboBoxItem Content="23"/>
                             </ComboBox>
-                            <ComboBox Width="60" Height="25" Margin="5" VerticalContentAlignment="Center">
+                            <ComboBox x:Name="EndMinuteBox" Width="60" Height="25" Margin="5" VerticalContentAlignment="Center">
                                 <ComboBoxItem Content="00"/>
                                 <ComboBoxItem Content="15"/>
                                 <ComboBoxItem Content="30"/>
@@ -130,16 +118,18 @@
                     </StackPanel>
                 </StackPanel>
 
-                <Button Content="Save Sleep Log"
-                Width="160"
-                Height="40"
-                Background="#4F46E5"
-                Foreground="White"
-                FontWeight="SemiBold"
-                BorderBrush="Transparent"
-                Cursor="Hand"
-                Margin="10"
-                HorizontalAlignment="Left"/>
+                <Button x:Name="SaveSleepButton"
+                        Content="Save Sleep Log"
+                        Width="160"
+                        Height="40"
+                        Background="#4F46E5"
+                        Foreground="White"
+                        FontWeight="SemiBold"
+                        BorderBrush="Transparent"
+                        Cursor="Hand"
+                        Margin="10"
+                        HorizontalAlignment="Left" 
+                        Click="SaveSleepButton_Click"/>
             </StackPanel>
 
             <Grid Grid.Column="2">
@@ -149,8 +139,9 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="Sleep Logs" FontSize="22" FontWeight="SemiBold" Foreground="White" Margin="10" Grid.Row="0"/>
-                
-                <ListBox Grid.Row="1"
+
+                <ListBox x:Name="SleepLogsList"
+                         Grid.Row="1"
                          Background="#2D2D40"
                          Foreground="White"
                          Margin="10"

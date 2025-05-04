@@ -1,61 +1,93 @@
-﻿using SkiaSharp;
-using LiveChartsCore;
-using LiveChartsCore.SkiaSharpView;
+﻿using DigitalWellBeingApp.Data;
+using DigitalWellBeingApp.Models;
 using LiveChartsCore.SkiaSharpView.Painting;
-using System.Collections.Generic;
-using LiveChartsCore.SkiaSharpView.Drawing.Geometries;
-using LiveChartsCore.Measure;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore;
+using SkiaSharp;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-namespace DigitalWellBeingApp.ViewModels
+public class SleepViewModel : INotifyPropertyChanged
 {
-    public class SleepViewModel
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    private ObservableCollection<double> _sleepValues = new();
+    private string[] _xLabels = Array.Empty<string>();
+
+    public ISeries[] Series { get; set; }
+    public Axis[] XAxes { get; set; }
+    public Axis[] YAxes { get; set; }
+
+    public SleepViewModel()
     {
-        public ISeries[] Series { get; set; } =
-        [
+        LoadData();
+    }
+
+    public void LoadData()
+    {
+        using var db = new AppDbContext();
+        db.Database.EnsureCreated();
+
+        var sleepData = db.SleepEntries
+            .OrderBy(e => e.Date)
+            .ToList();
+
+        _sleepValues = new ObservableCollection<double>(sleepData.Select(e => e.HoursSlept));
+        _xLabels = sleepData.Select(e => e.Date.ToString("ddd")).ToArray();
+
+        Series = new ISeries[]
+        {
             new ColumnSeries<double>
             {
-                Values = new ObservableCollection<double> { 9, 7.5, 7, 8, 6, 8.5, 8 },
+                Values = _sleepValues,
                 Name = "Sleep Duration",
                 MaxBarWidth = 50,
-            }
-        ];
-
-        public Axis[] XAxes { get; set; } =
-        {
-            new Axis
-            {
-                Name = "Time of Day",
-                NamePaint = new SolidColorPaint(SKColors.White),
-                Labeler = (value) => 
-                {
-                    return value switch
-                    {
-                        0 => "Mon",
-                        1 => "Tue",
-                        2 => "Wed",
-                        3 => "Thu",
-                        4 => "Fri",
-                        5 => "Sat",
-                        6 => "Sun",
-                        _ => value.ToString()
-                    };
-                },
-                IsVisible = true,
-                MinStep = 1,
+                Fill = new SolidColorPaint(SKColors.SkyBlue)
             }
         };
 
-        public Axis[] YAxes { get; set; } =
+        XAxes = new Axis[]
         {
             new Axis
             {
-                Name = "Sleep Duration",
+                Name = "Day",
+                Labels = _xLabels,
                 NamePaint = new SolidColorPaint(SKColors.White),
-                Labeler = (value) => $"{value} hrs", 
-                IsVisible = true,
-                
+                TextSize = 14,
+                MinStep = 1
             }
         };
+
+        YAxes = new Axis[]
+        {
+            new Axis
+            {
+                Name = "Hours",
+                Labeler = value => $"{value} hrs",
+                NamePaint = new SolidColorPaint(SKColors.White),
+                MinLimit = 0
+            }
+        };
+
+        OnPropertyChanged(nameof(Series));
+        OnPropertyChanged(nameof(XAxes));
+        OnPropertyChanged(nameof(YAxes));
     }
+
+    public void AddSleepEntry(DateTime date, double hoursSlept)
+    {
+        using var db = new AppDbContext();
+        db.SleepEntries.Add(new SleepEntry
+        {
+            Date = date,
+            HoursSlept = hoursSlept
+        });
+        db.SaveChanges();
+
+        LoadData(); 
+    }
+
+    private void OnPropertyChanged([CallerMemberName] string? name = null)
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 }
