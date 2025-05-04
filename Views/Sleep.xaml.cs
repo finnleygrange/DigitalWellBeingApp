@@ -21,30 +21,31 @@ namespace DigitalWellBeingApp.Views
     /// </summary>
     public partial class Sleep : UserControl
     {
+
+        private SleepViewModel viewModel;
+
         public Sleep()
         {
             InitializeComponent();
             this.DataContext = new SleepViewModel();
         }
 
-        private void btnDay_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnWeek_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (DataContext is SleepViewModel vm)
+                vm.SetFilter(SleepFilter.Week);
         }
 
         private void btnMonth_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (DataContext is SleepViewModel vm)
+                vm.SetFilter(SleepFilter.Month);
         }
 
         private void btnSixMonths_Checked(object sender, RoutedEventArgs e)
         {
-
+            if (DataContext is SleepViewModel vm)
+                vm.SetFilter(SleepFilter.SixMonths);
         }
 
         private void SaveSleepButton_Click(object sender, RoutedEventArgs e)
