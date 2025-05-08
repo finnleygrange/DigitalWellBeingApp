@@ -19,8 +19,9 @@
                HorizontalAlignment="Center"
                Margin="0,20,0,10"/>
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Top">
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Top">
             <RadioButton Content="Dashboard" Name="btnDashboard" Style="{StaticResource NavButton}" Click="btnDashboard_Click" GroupName="NavGroup" />
+            <RadioButton Content="Tracker" Name="btnTracker" Style="{StaticResource NavButton}" Click="btnTracker_Click" GroupName="NavGroup" />
             <RadioButton Content="Pomodoro" Name="btnPomodoro" Style="{StaticResource NavButton}" Click="btnPomodoro_Click" GroupName="NavGroup" />
             <RadioButton Content="Sleep" Name="btnSleep" Style="{StaticResource NavButton}" Click="btnSleep_Click" GroupName="NavGroup" />
             <RadioButton Content="Reports" Name="btnReports" Style="{StaticResource NavButton}" Click="btnReports_Click" GroupName="NavGroup" />

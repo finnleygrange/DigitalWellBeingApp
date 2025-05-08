@@ -149,5 +149,10 @@ namespace DigitalWellBeingApp
         {
             MainContent.Content = new Sleep();
         }
+
+        private void Sidebar_ViewTracker(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new AppUsagePage();
+        }
     }
 }

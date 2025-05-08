@@ -152,5 +152,16 @@ namespace DigitalWellBeingApp.Views
         {
             
         }
+
+        private void AddTask_Click(object sender, RoutedEventArgs e)
+        {
+            var task = TaskInputBox.Text.Trim();
+            if (!string.IsNullOrEmpty(task))
+            {
+                TasksListBox.Items.Add(task);
+                TaskInputBox.Text = "";
+            }
+        }
+
     }
 }
