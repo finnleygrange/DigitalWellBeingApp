@@ -13,6 +13,7 @@ namespace DigitalWellBeingApp.Data
     {
         public DbSet<SleepEntry> SleepEntries { get; set; }
         public DbSet<AppUsageData> AppUsageData { get; set; }
+        public DbSet<PomodoroData> PomodoroData { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite($"Data Source={Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data.db")}");

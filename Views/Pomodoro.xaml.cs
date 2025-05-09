@@ -1,9 +1,10 @@
-﻿using System;
+﻿using DigitalWellBeingApp.Data;
+using DigitalWellBeingApp.Models;
+using System;
 using System.IO;
 using System.Media;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace DigitalWellBeingApp.Views
@@ -25,6 +26,7 @@ namespace DigitalWellBeingApp.Views
             _timer.Tick += Timer_Tick;
 
             SetTimer(GetDurationForMode("Pomodoro"));
+            LoadPomodoroCountFromDb();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -43,6 +45,7 @@ namespace DigitalWellBeingApp.Views
                 if (btnPomodoro.IsChecked == true)
                     _pomodoroCount++;
 
+                SavePomodoroCountToDb();
 
                 UpdatePomodoroCountDisplay();
                 PlayCustomAlarm();
@@ -57,7 +60,6 @@ namespace DigitalWellBeingApp.Views
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
             string soundPath = Path.Combine(Directory.GetCurrentDirectory(), "Resources", "Sounds", "click.wav");
-
 
             if (!_isRunning && _timeLeft.TotalSeconds == 0)
             {
@@ -95,15 +97,6 @@ namespace DigitalWellBeingApp.Views
                 SetTimer(GetDurationForMode("LongBreak"));
         }
 
-        private void btnPomodoro_Checked(object sender, RoutedEventArgs e) =>
-            SetTimer(GetDurationForMode("Pomodoro"));
-
-        private void btnShortBreak_Checked(object sender, RoutedEventArgs e) =>
-            SetTimer(GetDurationForMode("ShortBreak"));
-
-        private void btnLongBreak_Checked(object sender, RoutedEventArgs e) =>
-            SetTimer(GetDurationForMode("LongBreak"));
-
         private void SetTimer(TimeSpan duration)
         {
             _timeLeft = duration;
@@ -127,6 +120,46 @@ namespace DigitalWellBeingApp.Views
             };
         }
 
+        private void SavePomodoroCountToDb()
+        {
+            using (var db = new AppDbContext())
+            {
+                var pomodoroData = db.PomodoroData
+                    .FirstOrDefault(p => p.Date.Date == DateTime.Now.Date);
+
+                if (pomodoroData == null)
+                {
+                    pomodoroData = new PomodoroData
+                    {
+                        Date = DateTime.Now.Date,
+                        CompletedPomodoros = _pomodoroCount
+                    };
+                    db.PomodoroData.Add(pomodoroData);
+                }
+                else
+                {
+                    pomodoroData.CompletedPomodoros = _pomodoroCount;
+                }
+
+                db.SaveChanges();
+            }
+        }
+
+        private void LoadPomodoroCountFromDb()
+        {
+            using (var db = new AppDbContext())
+            {
+                var pomodoroData = db.PomodoroData
+                    .FirstOrDefault(p => p.Date.Date == DateTime.Now.Date);
+
+                if (pomodoroData != null)
+                {
+                    _pomodoroCount = pomodoroData.CompletedPomodoros;
+                    UpdatePomodoroCountDisplay();
+                }
+            }
+        }
+
         private void PlayCustomAlarm()
         {
             string soundPath = Path.Combine(Directory.GetCurrentDirectory(), "Resources", "Sounds", "alarm.wav");
@@ -148,11 +181,6 @@ namespace DigitalWellBeingApp.Views
             }
         }
 
-        private void btnStart_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            
-        }
-
         private void AddTask_Click(object sender, RoutedEventArgs e)
         {
             var task = TaskInputBox.Text.Trim();
@@ -162,6 +190,5 @@ namespace DigitalWellBeingApp.Views
                 TaskInputBox.Text = "";
             }
         }
-
     }
 }
