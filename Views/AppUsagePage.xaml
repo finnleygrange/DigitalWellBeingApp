@@ -68,15 +68,6 @@
 
             <Border Background="#2A2A40" CornerRadius="8" Padding="20" Margin="0,10" HorizontalAlignment="Stretch">
                 <StackPanel>
-                    <TextBlock x:Name="AverageDailyUsageText"
-                               Text="Average Daily Usage: 0 sec"
-                               FontSize="16"
-                               Foreground="White"/>
-                </StackPanel>
-            </Border>
-
-            <Border Background="#2A2A40" CornerRadius="8" Padding="20" Margin="0,10" HorizontalAlignment="Stretch">
-                <StackPanel>
                     <TextBlock x:Name="TotalSessionsText"
                                Text="Total Sessions: 0"
                                FontSize="16"

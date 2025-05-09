@@ -20,7 +20,6 @@ public class AppUsageTracker
     private DateTime _firstUsageDate = DateTime.Now;
 
     public double TotalUsage { get; private set; }
-    public double AverageDailyUsage { get; private set; }
     public int TotalSessions { get; private set; }
 
     public AppUsageTracker()
@@ -41,7 +40,7 @@ public class AppUsageTracker
             _usageData[_lastApp] = TimeSpan.Zero;
 
         _timer.Start();
-        LoadData(); 
+        LoadData();
     }
 
     public void Stop()
@@ -96,18 +95,7 @@ public class AppUsageTracker
 
     private void UpdateMetrics()
     {
-        var daysSinceFirstUsage = (DateTime.Now - _firstUsageDate).Days;
-        if (daysSinceFirstUsage > 0)
-        {
-            AverageDailyUsage = TotalUsage / daysSinceFirstUsage;
-        }
-        else
-        {
-            AverageDailyUsage = 0; 
-        }
-
         TotalUsage = _totalUsageTime.TotalSeconds + _usageData.Values.Sum(v => v.TotalSeconds);
-
         TotalSessions = _totalSessions + _appSessionCounts.Values.Sum();
     }
 
