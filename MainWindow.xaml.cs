@@ -12,6 +12,7 @@ using DigitalWellBeingApp.Views;
 using System.Runtime.InteropServices;
 using System.Windows.Threading;
 using System.Diagnostics;
+using DigitalWellBeingApp.Data;
 
 namespace DigitalWellBeingApp
 {
@@ -46,8 +47,6 @@ namespace DigitalWellBeingApp
 
             //DataContext = this;
         }
-
-        
 
         private void Timer_Tick(object sender, EventArgs e)
         {

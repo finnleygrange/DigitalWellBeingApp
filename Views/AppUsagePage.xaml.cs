@@ -1,18 +1,10 @@
-﻿using DigitalWellBeingApp.Models;
+﻿using DigitalWellBeingApp.Data;
+using DigitalWellBeingApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace DigitalWellBeingApp.Views
@@ -27,12 +19,35 @@ namespace DigitalWellBeingApp.Views
             InitializeComponent();
 
             _appUsageTracker = new AppUsageTracker();
-            _appUsageTracker.Start(); 
+            _appUsageTracker.Start();  
 
             _timer = new DispatcherTimer();
             _timer.Interval = TimeSpan.FromSeconds(1);
-            _timer.Tick += (sender, args) => PopulateAppUsageData();
+            _timer.Tick += (sender, args) => UpdateMetrics();
             _timer.Start();
+
+            UpdateMetrics();
+        }
+
+        private void UpdateMetrics()
+        {
+            var totalUsage = _appUsageTracker.GetTotalUsageTime().TotalSeconds + _appUsageTracker.GetUsageData().Values.Sum(v => v.TotalSeconds);
+            var totalSessions = _appUsageTracker.GetTotalSessions() + _appUsageTracker.GetAppSessionCounts().Values.Sum();
+
+            var daysSinceFirstUsage = (DateTime.Now - _appUsageTracker.GetFirstUsageDate()).Days;
+
+            if (daysSinceFirstUsage < 1)
+            {
+                daysSinceFirstUsage = 1;
+            }
+
+            double averageDailyUsage = totalUsage / daysSinceFirstUsage;
+
+            TotalUsageText.Text = $"Total Usage: {(int)totalUsage} sec";
+            AverageDailyUsageText.Text = $"Average Daily Usage: {Math.Round(averageDailyUsage)} sec";
+            TotalSessionsText.Text = $"Total Sessions: {totalSessions}";
+
+            PopulateAppUsageData();
         }
 
         private void PopulateAppUsageData()
@@ -55,29 +70,6 @@ namespace DigitalWellBeingApp.Views
             }
 
             AppUsageListView.ItemsSource = appUsageData;
-
-            UpdateMetrics();
         }
-
-
-
-
-        private void UpdateMetrics()
-        {
-            var totalUsage = _appUsageTracker.GetTotalUsageTime();
-            TotalUsageText.Text = $"Total Usage: {(int)totalUsage.TotalSeconds} sec";
-
-            var daysSinceFirstUsage = (DateTime.Now - _appUsageTracker.GetFirstUsageDate()).Days;
-            var averageDailyUsage = (daysSinceFirstUsage > 0)
-                                    ? (int)(totalUsage.TotalSeconds / daysSinceFirstUsage) 
-                                    : 0;
-
-            AverageDailyUsageText.Text = $"Average Daily Usage: {averageDailyUsage} sec";
-
-            var totalSessions = _appUsageTracker.GetTotalSessions();
-            TotalSessionsText.Text = $"Total Sessions: {totalSessions}";
-        }
-
-
     }
 }

@@ -12,6 +12,21 @@ namespace DigitalWellBeingApp.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AppUsageData",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    AppName = table.Column<string>(type: "TEXT", nullable: true),
+                    TimeSpent = table.Column<int>(type: "INTEGER", nullable: false),
+                    SessionCount = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppUsageData", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SleepEntries",
                 columns: table => new
                 {
@@ -29,6 +44,9 @@ namespace DigitalWellBeingApp.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AppUsageData");
+
             migrationBuilder.DropTable(
                 name: "SleepEntries");
         }

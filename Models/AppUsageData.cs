@@ -8,7 +8,10 @@ namespace DigitalWellBeingApp.Models
 {
     public class AppUsageData
     {
-        public string AppName { get; set; }  
+        public int Id { get; set; }
+        public string AppName { get; set; }
         public int TimeSpent { get; set; }
+        public int SessionCount { get; set; }
+        public DateTime Date { get; set; }
     }
 }
