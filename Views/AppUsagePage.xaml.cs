@@ -31,14 +31,16 @@ namespace DigitalWellBeingApp.Views
 
         private void UpdateMetrics()
         {
-            var totalUsage = _appUsageTracker.GetTotalUsageTime().TotalSeconds + _appUsageTracker.GetUsageData().Values.Sum(v => v.TotalSeconds);
-            var totalSessions = _appUsageTracker.GetTotalSessions() + _appUsageTracker.GetAppSessionCounts().Values.Sum();
+            var totalUsage = _appUsageTracker.GetTotalUsageTime().TotalSeconds;  
+            var totalSessions = _appUsageTracker.GetTotalSessions();  
 
-            TotalUsageText.Text = $"Total Usage: {(int)totalUsage} sec";
+            TotalUsageText.Text = $"Total Usage: {FormatTimeSpan(TimeSpan.FromSeconds(totalUsage))}";
             TotalSessionsText.Text = $"Total Sessions: {totalSessions}";
 
             PopulateAppUsageData();
         }
+
+
 
         private void PopulateAppUsageData()
         {
@@ -61,5 +63,10 @@ namespace DigitalWellBeingApp.Views
 
             AppUsageListView.ItemsSource = appUsageData;
         }
+        private string FormatTimeSpan(TimeSpan timeSpan)
+        {
+            return $"{timeSpan.Hours}h {timeSpan.Minutes}m {timeSpan.Seconds}s";
+        }
+
     }
 }
