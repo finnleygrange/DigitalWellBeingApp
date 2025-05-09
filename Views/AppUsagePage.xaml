@@ -43,7 +43,7 @@
                                            FontSize="16"
                                            VerticalAlignment="Center"/>
 
-                                <TextBlock Text="{Binding TimeSpent, StringFormat={}{0} sec}"
+                                <TextBlock Text="{Binding TimeSpentFormatted}"
                                            FontSize="16"
                                            FontWeight="SemiBold"
                                            VerticalAlignment="Center"
@@ -57,10 +57,11 @@
         </ScrollViewer>
 
         <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
+
             <Border Background="#2A2A40" CornerRadius="8" Padding="20" Margin="0,10" HorizontalAlignment="Stretch">
                 <StackPanel>
                     <TextBlock x:Name="TotalUsageText"
-                               Text="Total Usage: 0 sec"
+                               Text="Total Usage: 00:00:00"
                                FontSize="16"
                                Foreground="White"/>
                 </StackPanel>
