@@ -38,12 +38,19 @@ namespace DigitalWellBeingApp.Views
         private void PopulateAppUsageData()
         {
             var appUsageData = new List<AppUsageData>();
+            var sessionCounts = _appUsageTracker.GetAppSessionCounts();
+
             foreach (var app in _appUsageTracker.GetUsageData())
             {
+                if (app.Key == "DigitalWellBeingApp") continue;
+
+                int sessions = sessionCounts.ContainsKey(app.Key) ? sessionCounts[app.Key] : 0;
+                int totalSeconds = (int)app.Value.TotalSeconds;
+
                 appUsageData.Add(new AppUsageData
                 {
-                    AppName = app.Key,
-                    TimeSpent = (int)app.Value.TotalSeconds
+                    AppName = $"{app.Key} ({sessions} session{(sessions == 1 ? "" : "s")})",
+                    TimeSpent = totalSeconds
                 });
             }
 
@@ -51,6 +58,9 @@ namespace DigitalWellBeingApp.Views
 
             UpdateMetrics();
         }
+
+
+
 
         private void UpdateMetrics()
         {
