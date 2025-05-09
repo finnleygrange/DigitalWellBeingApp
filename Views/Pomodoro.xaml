@@ -14,9 +14,9 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20">
-            <RadioButton x:Name="btnPomodoro" Content="Pomodoro" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" IsChecked="True" Checked="btnPomodoro_Checked"/>
-            <RadioButton x:Name="btnShortBreak" Content="Short Break" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" Margin="10,0" Checked="btnShortBreak_Checked"/>
-            <RadioButton x:Name="btnLongBreak" Content="Long Break" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" Checked="btnLongBreak_Checked"/>
+            <RadioButton x:Name="btnPomodoro" Content="Pomodoro" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" IsChecked="True" />
+            <RadioButton x:Name="btnShortBreak" Content="Short Break" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" Margin="10,0" />
+            <RadioButton x:Name="btnLongBreak" Content="Long Break" Width="150" HorizontalContentAlignment="Center" Style="{StaticResource NavButton}" />
         </StackPanel>
 
         <Grid Grid.Row="1" Margin="10">

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DigitalWellBeingApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250503234904_InitialCreate")]
+    [Migration("20250509015716_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -19,6 +19,26 @@ namespace DigitalWellBeingApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.4");
+
+            modelBuilder.Entity("DigitalWellBeingApp.Models.AppUsageData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("AppName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("SessionCount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("TimeSpent")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppUsageData");
+                });
 
             modelBuilder.Entity("DigitalWellBeingApp.Models.SleepEntry", b =>
                 {
